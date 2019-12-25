@@ -47,7 +47,6 @@ public class ApplianceReader {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(filename));
-			 br = new BufferedReader(fr);
 			List<String> allAppliances = new ArrayList<>();
 			String s;
 			while((s = br.readLine())!= null) {
