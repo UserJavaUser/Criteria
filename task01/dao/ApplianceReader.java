@@ -1,6 +1,7 @@
 package by.tc.task01.dao;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,10 @@ public class ApplianceReader {
 		}
 	}
 
-	private List<String> readWithType(String applianceType) throws Exception{
-		FileReader fr = new FileReader(filename);
-		BufferedReader br = new BufferedReader(fr);
+	private List<String> readWithType(String applianceType) throws Exception {
+		BufferedReader br = null;
 		try {
+			br = new BufferedReader(new FileReader(filename));
 			List<String> appliancesByType = new ArrayList<>();
 			String s;
 			while((s = br.readLine())!= null) {
@@ -33,32 +34,33 @@ public class ApplianceReader {
 				}	
 			}
 			return appliancesByType;
-		}catch(Exception e) {
-			
 		}
 		finally {
-			fr.close();
+			if (br != null) {
+				br.close();
+			}
 		}
-		return null;
+
 	}
 
 	private List<String> readAll() throws Exception{
-		FileReader fr = new FileReader(filename);
-		BufferedReader br = new BufferedReader(fr);
+		BufferedReader br = null;
 		try {
+			br = new BufferedReader(new FileReader(filename));
+			 br = new BufferedReader(fr);
 			List<String> allAppliances = new ArrayList<>();
 			String s;
 			while((s = br.readLine())!= null) {
 					allAppliances.add(s);
 			}
 			return allAppliances;
-		}catch(Exception e) {
-			
 		}
 		finally {
-			fr.close();
+			if (br != null) {
+				br.close();
+			}
 		}
-		return null;
 	}
-	
+
 }
+
