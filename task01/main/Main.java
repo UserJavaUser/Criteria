@@ -45,7 +45,7 @@ public class Main {
 
 		PrintApplianceInfo.print(appliances);
 		} catch (ApplianceServiceException e) {
-			System.out.println("Error has occured");
+			System.out.println("Error has occured - " + e.getMessage());
 		}
 	
 	}
